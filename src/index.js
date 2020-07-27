@@ -1,4 +1,6 @@
 import m from 'mithril';
+import { injectGlobal } from 'emotion';
+import { between } from 'polished';
 import UserList from './views/UserList.js';
 import UserForm from './views/UserForm.js';
 import Layout from './views/Layout.js';
@@ -14,4 +16,11 @@ m.route(document.body, '/list', {
   },
   '/counters': Counters,
   '/hover-index': HoverIndex,
+});
+
+injectGlobal({
+  html: {
+    fontFamily: '-apple-system,system-ui,BlinkMacSystemFont,sans-serif',
+    fontSize: between('12px', '16px', '320px', '1280px'),
+  },
 });
