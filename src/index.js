@@ -6,6 +6,7 @@ import UserForm from './views/UserForm.js';
 import Layout from './views/Layout.js';
 import Counters from './views/Counters.js';
 import HoverIndex from './views/HoverIndex.js';
+import PerfTest from './views/PerfTest.js';
 
 m.route(document.body, '/list', {
   '/list': {
@@ -16,6 +17,7 @@ m.route(document.body, '/list', {
   },
   '/counters': Counters,
   '/hover-index': HoverIndex,
+  '/perf-test': PerfTest,
 });
 
 injectGlobal({
