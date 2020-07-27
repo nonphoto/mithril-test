@@ -3,6 +3,7 @@ import UserList from './views/UserList.js';
 import UserForm from './views/UserForm.js';
 import Layout from './views/Layout.js';
 import Counters from './views/Counters.js';
+import HoverIndex from './views/HoverIndex.js';
 
 m.route(document.body, '/list', {
   '/list': {
@@ -11,5 +12,6 @@ m.route(document.body, '/list', {
   '/edit/:id': {
     render: ({ attrs }) => m(Layout, m(UserForm, attrs)),
   },
-  '/counters': Counters(),
+  '/counters': Counters,
+  '/hover-index': HoverIndex,
 });
