@@ -3,6 +3,8 @@ import { css } from 'emotion';
 
 import Images from '../models/Images.js';
 
+let mousePos = [0, 0];
+
 export default () => {
   let activeImages = Object.fromEntries(
     Images.all.map(({ key }) => [key, false]),
@@ -13,16 +15,25 @@ export default () => {
       const activeImage = Images.all.find((image) => activeImages[image.key]);
       return m(
         'div',
-        { class: css({ position: 'relative' }) },
+        {
+          onmousemove: (e) => {
+            mousePos = [e.clientX, e.clientY];
+          },
+          class: css({ position: 'relative' }),
+        },
         activeImage &&
           m('img', {
             class: css({
               position: 'fixed',
+              pointerEvents: 'none',
               top: '0',
               left: '0',
               width: '10rem',
               height: '10rem',
             }),
+            style: {
+              transform: `translate(calc(${mousePos[0]}px - 50%), calc(${mousePos[1]}px - 50%))`,
+            },
             src: activeImage.src,
           }),
         m(
